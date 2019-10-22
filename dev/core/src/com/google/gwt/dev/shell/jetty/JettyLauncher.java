@@ -456,7 +456,7 @@ public class JettyLauncher extends ServletContainerLauncher {
         String resourceName = name.replace('.', '/') + ".class";
         URL found = systemClassLoader.getResource(resourceName);
         if (found == null) {
-          return null;
+          throw new ClassNotFoundException(name);
         }
 
         // Special-case JDBCUnloader; it should always be loaded in the webapp classloader

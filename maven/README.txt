@@ -1,3 +1,11 @@
+
+==== MIST =========================================================================
+> export GWT_MAVEN_REPO_URL=http://rdstorage/artifactory/ext-release-local
+> export GWT_MAVEN_REPO_ID=artifactory
+> ant clean dist -DGWT_VERSION=2.8.2-10172019jetty94
+> maven/push-gwt.sh
+====================================================================================
+
 push-gwt.sh packages and deploys GWT to a local or remote Maven
 repository
  
