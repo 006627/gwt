@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Google Inc.
+ * Copyright 2019 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,16 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.gwt.emultest.java.lang;
+package java.lang;
 
-/**
- * Provides access to JsException emul that is not normally available in JRE.
- */
-class JsExceptionViolator {
-  public static native Exception createJsException(Object wrapped) /*-{
-    return @com.google.gwt.core.client.JavaScriptException::new(Ljava/lang/Object;)(wrapped);
-  }-*/;
-  public static native Object getBackingJsObject(Throwable t) /*-{
-    return t.@Throwable::backingJsObject;
-  }-*/;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+
+@JsType(isNative = true, name = "*", namespace = JsPackage.GLOBAL)
+interface HasCloneableTypeMarker {
+  @JsProperty(name = "$implements__java_lang_Cloneable")
+  boolean getTypeMarker();
 }
